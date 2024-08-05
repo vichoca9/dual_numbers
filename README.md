@@ -41,7 +41,7 @@ To add them, make sure the dual number comes first, since we cannot modify
 python's integer and float methods for adding:
 
 ```
-a=1 .e + 2
+a=1 .d + 2
 b=1
 a+b
 >>> (3+1d) # CORRECT!!
@@ -57,7 +57,7 @@ operands are dual. See docs or code for the cases when numbers are promoted.
 
 * `a+b`,`a-b`,`a*b`, etc
 * `a.exp()` and `a.log()` return their respective values. 
-See docs or code for extending to other algebras ex: `exp(self,f=mathmodule)`.
+See docs or code for extending to other algebras ex.: `exp(self,f=mathmodule)`.
 
 ## Requirements
 Install these with pip install as usual:
