@@ -46,7 +46,8 @@ b=1
 a+b
 >>> (3+1d) # CORRECT!!
 b+a
->>> Error: "+" not defined for int with dual ```
+>>> Error: "+" not defined for int with dual
+```
 
 So make sure to declare all your numbers as dual if you dont 
 want to deal with these.
