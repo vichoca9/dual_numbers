@@ -14,7 +14,7 @@ dual numbers can make posible translation as multiplication. As the dual
 part squares to 0, they can also be used for automatic differentiation:
 
 ```f(x+d) = f(x) + f'(x)d```
-```Note: in complex numbers, f(x+i)=f(x)+f'(x)i```
+```Note: in complex numbers, f'(x) = Img(f(x+i*dx))/dx```
 
 More info in [wikipedia](https://en.wikipedia.org/wiki/Dual_number).
 ## How to use:
