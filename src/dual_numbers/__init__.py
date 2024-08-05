@@ -60,6 +60,10 @@ class dual():
 		return dual.exp(self.log()*a)
 	def __rpow__(self,a):
 		return (dual.log(a))**(self)
+	def abs(self):
+		return self.real
+	def arg(self):
+		return self.dl/self.real
 
 @literal(float,int,name="d")
 def makedual(self):

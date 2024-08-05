@@ -28,6 +28,9 @@ a
 b=3 .d + 1
 b
 >>> (1+3d)
+b=3.0.d+1
+b
+>>> (1+3d)
 c=dual(1) # same as complex(1)
 c
 >>> (1+0d)
@@ -54,13 +57,20 @@ b+a
 So make sure to declare all your numbers as dual if you dont 
 want to deal with these.
 
-Basic arithmetic operations `+,-,*,/,exp,log` work as intended if both
+Basic arithmetic operations `+,-,*,/,exp,log,abs,arg` work as intended if both
 operands are dual. See docs or code for the cases when numbers are promoted.
 
-* `a+b`,`a-b`,`a*b`, etc
+* `a+b`,`a-b`,`a*b`, `a/b`, `a**b` work as expected.
 * `a.exp()` and `a.log()` return their respective values. 
+* `a.abs()` returns the real part, and `a.arg()` returns `a.dl/a.real`
 See docs or code for extending to other algebras ex.: `exp(self,f=mathmodule)`.
 
+In case there is a math domain error, python handles them as usual, ex.:
+```
+a=1 .d # pure dual numbers do not have inverse
+a**-1
+>>> ValueError: math domain error
+```
 ## Requirements
 Install these with pip install as usual:
 
@@ -69,8 +79,7 @@ Install these with pip install as usual:
 
 ## TODO
 - [ ] Test the library
-- [ ] Make literals optional
-- [ ] Add wheel
+- [X] Add wheel
 - [ ] Make docs
 - [ ] Put more use cases
 - [ ] Give more links
