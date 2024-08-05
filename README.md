@@ -66,9 +66,9 @@ Install these with pip install as usual:
 * forbiddenfruit (dependency for the former)
 
 ## TODO
-[ ] Test the library
-[ ] Make literals optional
-[ ] Add wheel
-[ ] Make docs
-[ ] Put more use cases
-[ ] Give more links
+- [ ] Test the library
+- [ ] Make literals optional
+- [ ] Add wheel
+- [ ] Make docs
+- [ ] Put more use cases
+- [ ] Give more links
