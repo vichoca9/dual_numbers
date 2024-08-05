@@ -6,6 +6,7 @@ Python uses ```j``` for the imaginary unit, here we use ```d```  for
 the dual unit, in order to differentiate it from scientific notation.
  
 ```d^2 = 0```
+
 ```exp(a*d)=1+a*d```
 
 Since complex numbers can make rotations be done as multiplication,
@@ -18,7 +19,8 @@ part squares to 0, they can also be used for automatic differentiation:
 More info in [wikipedia](https://en.wikipedia.org/wiki/Dual_number).
 ## How to use:
 To declare a dual number:
-```a=dual(1,2)
+```
+a=dual(1,2)
 a
 >>> (1+2d)
 b=3 .d + 1
@@ -38,7 +40,8 @@ dual(1+1j,2).real
 To add them, make sure the dual number comes first, since we cannot modify
 python's integer and float methods for adding:
 
-```a=1 .e + 2
+```
+a=1 .e + 2
 b=1
 a+b
 >>> (3+1d) # CORRECT!!
