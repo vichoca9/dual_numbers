@@ -1,3 +1,6 @@
+#import dual_numbers
+__all__ = ["dual"]
+
 from custom_literals import *
 import math
 import cmath

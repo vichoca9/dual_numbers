@@ -10,7 +10,7 @@ version = {attr = "package_name.__version__"}
 
 [project]
 name = "dual_numbers"
-version = "0.0.6"
+version = "0.0.7"
 dependencies = [
     "forbiddenfruit",
     "custom-literals",
