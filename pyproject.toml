@@ -3,14 +3,14 @@ requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools.packages.find]
-where = ["src"]
+where = ["src/dual_numbers"]
 
 [tool.setuptools.dynamic]
 version = {attr = "package_name.__version__"}
 
 [project]
 name = "dual_numbers"
-version = "0.0.4"
+version = "0.0.5"
 dependencies = [
     "forbiddenfruit",
     "custom-literals",
