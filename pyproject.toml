@@ -10,7 +10,7 @@ version = {attr = "package_name.__version__"}
 
 [project]
 name = "dual_numbers"
-version = "0.0.10"
+version = "0.0.11"
 dependencies = [
     "forbiddenfruit",
     "custom-literals",
@@ -18,7 +18,7 @@ dependencies = [
 authors = [
   { name="Vicente Carrasco Álvarez", email="vidacaal@gmail.com" },
 ]
-description = "2D dual numbers for python, with support for complex scalars"
+description = "2D dual numbers for python, with support for complex scalars or arbitrary domains"
 readme = "README.md"
 requires-python = ">=3.7"
 classifiers = [

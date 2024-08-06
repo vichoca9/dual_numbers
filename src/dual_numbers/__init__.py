@@ -41,25 +41,34 @@ class dual():
 		if type(a)!=type(dual(0,0)):
 			return dual(a,0)/self
 		return a/self
-	def exp(self,a=False,f=cmath): #return exp(self)
+	def exp(self,a=False,fexp=cmath.exp): #return exp(self)
 		if type(a)==type(dual(0,0)): # as method
 			return a.exp()
 		if type(self.real)==type(1) or type(self.real)==type(1.0):
-			f=math
-		k=dual(f.exp(self.real),0)
-		return k*dual(1,self.dl)
-	def log(self,a=False,f=math):
+			fexp=math.exp
+		k=dual(fexp(self.real),0)
+		return dual(fexp(0),self.dl)*k
+	def log(self,a=False,flog=math.log):
 		if type(a)==type(dual(0,0)): # as method
 			return a.log()
 		#if type(a)!=type(True) and type(a)!=type(dual(0,0)):
 		#	return dual(a,0).log()
 		if type(self.real)==type(1+1j):
-			f=cmath
-		return dual(f.log(self.real),self.dl/self.real)
-	def __pow__(self,a):
-		return dual.exp(self.log()*a)
+			flog=cmath.log
+		return dual(flog(self.real),self.dl/self.real)
+	def __pow__(self,a,f=cmath.exp): # greater precision for int values
+		#if type(a)==type(1) and a>0 and iter:
+		#	r=self
+		#	for i in range(1,a):
+		#		r=r*self
+		#	return r
+		return dual.exp(self.log()*a,fexp=f)
 	def __rpow__(self,a):
 		return (dual.log(a))**(self)
+	def pow(self,a,b,fexp=cmath.exp):
+		return a.__pow__(b,f=fexp)
+	def __eq__(self,a):
+		return (self.real==a.real)and(self.dl==a.dl)
 	def abs(self):
 		return self.real
 	def arg(self):

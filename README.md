@@ -77,9 +77,52 @@ Install these with pip install as usual:
 * custom_literals (for easy dual declaration with `.d`)
 * forbiddenfruit (dependency for the former)
 
+### Use case example: Dual quaternions
+
+Lets import a sane quaternion lib, like `pip install quaternions`.
+
+In order to extend all operations, all "scalars" of a dual must be
+quaternions, and we can also [define](https://en.wikipedia.org/wiki/Quaternion#Functions_of_a_quaternion_variable) 
+our own exp() and log() functions for them, 
+and provide them to the library for use:
+
+```
+import quaternions.quaternion
+from dual_numbers import *
+import math as m
+
+qt=quaternions.quaternion.Quaternion
+
+def qtexp(q):
+        if type(q) in [type(1),type(1.0)]:
+                return qt(m.exp(q),0,0,0)
+        v=qt(0,q.x,q.y,q.z)
+        norm=v.norm()
+        v_u=v.unit()
+        real=m.cos(norm)
+        return (v_u*m.sin(norm)+qt(real,0,0,0))*m.exp(q.w)
+
+def qtlog(q):
+        v=qt(0,q.x,q.y,q.z)
+        v_u=v.unit()
+        return v_u*m.acos(q.w/q.norm())+qt(m.log(q.norm),0,0,0)
+```
+
+Then, we can extend quaternions easily to dual quaternions:
+
+```
+q1=qt(1,1,0,0)
+q2=qt(1,1,0,0)
+unit=qt(1,0,0,0)
+dual(q1,q2).exp(fexp=qtexp)
+>>> (<1.469, 2.287, 0.0, 0.0>+<-0.819, 3.756, 0.0, 0.0>d)
+dual(q1,q2)+dual(q1,unit)
+>>> (<2, 2, 0, 0>+<2, 1, 0, 0>d)
+```
+
 ## TODO
 - [ ] Test the library
 - [X] Add wheel
 - [ ] Make docs
-- [ ] Put more use cases
+- [X] Put more use cases
 - [ ] Give more links
